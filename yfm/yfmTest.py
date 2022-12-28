@@ -12,16 +12,16 @@ class yfmTest (unittest.TestCase):
   def __init__(self, testCaseNames):
     unittest.TestCase.__init__(self,testCaseNames)
     # our yfinanceMongo client
-    self.admin =yfMongo(hostname="localhost", port=27017, database="yfmtest", verbose=False)
+    self.admin =yfMongo(hostname="localhost", port=27017, database="StockPricePrediction", verbose=False)
     # setup a client to access the mongodb and check its content directly
-    self.client = MongoClient ("localhost", 27017);
-    self.db = self.client["yfmtest"]
+    self.client = MongoClient ("localhost", 27017)
+    self.db = self.client["StockPricePrediction"]
 
   #
   # Class destructor cleans the database removing the test db
   #
   def __del__(self):
-    self.client.drop_database('yfmtest')
+    self.client.drop_database('StockPricePrediction')
 
   # Creates some test data in the timeline
   def generateData (self):
