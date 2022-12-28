@@ -1,18 +1,16 @@
-# sample urls
-# https://finance.yahoo.com/quote/AMD/financials?p=AMD
-# https://finance.yahoo.com/quote/AMD/balance-sheet?p=AMD
-# https://finance.yahoo.com/quote/AMD/cash-flow?p=AMD
+import requests
+import os
+import re
+import csv
+#web scraping of financial data from Yahoo Finance!! 
+#make dirctory that will save the data downloaded
+dir = 'financials/'
+try: os.stat(dir)
+except: os.mkdir(dir)
 
 ###############################################################################
 # download files
 ###############################################################################
-import requests
-import os
-
-dir = 'financials/'
-try: os.stat(dir)
-except: os.mkdir(dir)
-stock='AMD'
 
 def download(stock):
     stock = stock.upper()
@@ -32,17 +30,9 @@ def download(stock):
     cash_name = dir + stock + '.cash.txt'
     open(cash_name, 'wb').write(r.content)
 
-
-
-download('COP')
-
-
 ###############################################################################
 # parse files
 ################################################################################
-import os
-import re
-import csv
 
 def parse_income():
 
@@ -238,9 +228,4 @@ def parse_cash():
                 writer = csv.writer(f)
                 writer.writerows(clean_data)
         
-
-parse_income()
-parse_cash()
-parse_balance()
-
 
