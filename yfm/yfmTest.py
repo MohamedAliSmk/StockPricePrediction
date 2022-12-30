@@ -1,5 +1,6 @@
 import unittest
 from pymongo import *
+from yfm import yfMongo 
 from yfMongo import *
 from yfm import yfMongo
 
@@ -41,27 +42,27 @@ class yfmTest (unittest.TestCase):
 
   # Checks the create() generates the correct structure in the db
   def test_init (self):
-    self.assertTrue (self.db.timeline.find().count() == 0);
-    self.assertTrue (self.db.symbols.find().count() == 0);
+    self.assertTrue (self.db.timeline.find().count() == 0)
+    self.assertTrue (self.db.symbols.find().count() == 0)
 
   def test_clear(self):
     self.admin.clear()
-    self.assertTrue (self.db.timeline.find().count() == 0);
-    self.assertEqual (self.db.symbols.find().count(), 0);
+    self.assertTrue (self.db.timeline.find().count() == 0)
+    self.assertEqual (self.db.symbols.find().count(), 0)
 
   # Stocks are added correctly
   def test_add_stock (self):
     self.admin.add("a")
     self.admin.add("b")
     self.admin.add("c")
-    self.assertTrue (self.db.symbols.count() == 3);
+    self.assertTrue (self.db.symbols.count() == 3)
 
   # Repeated stocks arent added
   def test_add_repeat_stocks (self):
     self.admin.add ("a")
     self.admin.add ("b")
     self.admin.add ("a")
-    self.assertTrue (self.db.symbols.count() == 2);
+    self.assertTrue (self.db.symbols.count() == 2)
 
   # Test the symbol loading from file
   def test_load_symbols_file (self):
@@ -74,6 +75,7 @@ class yfmTest (unittest.TestCase):
     self.admin.remove ("ibm")
     self.assertEqual (self.db.symbols.count(), 29)
     self.assertEqual (self.db.symbols.find({'sym':"ibm"}).count(), 0)
+
 
   # Test removal of symbol and its related timeline
   def test_full_removal (self):

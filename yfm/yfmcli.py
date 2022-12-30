@@ -1,15 +1,12 @@
 import sys
 from yfm import fetcher
 
-##
 ## yfMongo command line interface
-##
 
 class yfm:
 
-  #
   # Help message when no valid options are provided
-  #
+
   def showHelp (self):
     print ("Usage :")
     print (" yfm clear                      -- clear all content from the db")
@@ -61,7 +58,7 @@ class yfm:
         exit()
       if firstParam == "load-symbols":
         moAdmin.loadSymbols (secondParam)
-        exit();
+        exit()
       if firstParam == "export-json":
         moAdmin.exportJSON (secondParam)
         exit()
@@ -96,7 +93,7 @@ class yfm:
         symbol = cliParams[2]
         startDate = cliParams[3]
         endDate = cliParams[4]
-        moAdmin.add (symbol, startDate, endDate);
+        moAdmin.add (symbol, startDate, endDate)
         exit()
     # defaul help output when no option matched
     self.showHelp()

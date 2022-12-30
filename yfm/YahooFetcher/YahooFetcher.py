@@ -4,10 +4,9 @@ from ComponentsExtractor import ComponentsExtractor
 from urllib3 import *
 import urllib
 
-#
+
 # This class invokes a query builder, fetches the content from the received URL
 # and returns the result
-#
 
 class YahooFetcher:
 
@@ -22,13 +21,13 @@ class YahooFetcher:
   def getHistAsJson (self, symbol, startDate, endDate, event="quote"):
     rows = self.query.getHistURL(symbol, startDate, endDate, event)
     fullData = [data.split(",") for data in rows[1:]]
-    jsonList = [];
+    jsonList = []
     if event == "quote":
       for elem in fullData[1:]:
         if len([n for n in elem if n == 'null']) > 0:
           continue
         json = {'date': elem[0], 'o': float(elem[1]), 'h': float(elem[2]), 'l': float(elem[3]), \
-            'c': float(elem[4]), 'adjc': float(elem[5]), 'v': int(elem[6]), "ticker":symbol};
+            'c': float(elem[4]), 'adjc': float(elem[5]), 'v': int(elem[6]), "ticker":symbol}
         jsonList.append(json)
       return jsonList
     elif event == "div" or event == "split":
@@ -38,6 +37,6 @@ class YahooFetcher:
       return jsonList
 
   def getComponents(self, index):
-    return ComponentsExtractor().getComponents(index);
+    return ComponentsExtractor().getComponents(index)
 
     

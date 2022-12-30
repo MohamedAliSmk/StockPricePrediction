@@ -1,6 +1,4 @@
-#
 # This class builds the URL using Yahoo conventions.
-#
 
 import urllib
 import urllib.request as request
@@ -9,7 +7,7 @@ from datetime import datetime
 class QueryBuilder:
 
   BASE_URL = "http://finance.yahoo.com/quote/AAPL"
-  HIST_URL = "https://query1.finance.yahoo.com/v7/finance/download/{}?{}";
+  HIST_URL = "https://query1.finance.yahoo.com/v7/finance/download/{}?{}"
 
   def refreshCookie (self):
     self.cookie = None

@@ -1,6 +1,4 @@
-#
 # This class extracts a list of components given a Yahoo index name
-#
 
 from bs4 import BeautifulSoup
 import urllib3
@@ -29,7 +27,7 @@ class ComponentsExtractor:
   # 
   def getExchange (self, exch):
     BASE_URL = "http://www.eoddata.com/stocklist/_EXCHANGE_ID_/_L_.htm"
-    exchangeUrl = BASE_URL.replace("_EXCHANGE_ID_", exch);
+    exchangeUrl = BASE_URL.replace("_EXCHANGE_ID_", exch)
     exchangeStocks = []
     for one in range(97,123): # a .. z 123
       url = exchangeUrl.replace("_L_", chr(one))

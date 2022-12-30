@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>  Dashboard  </title>
      <!--  all link   -->
-     <link rel="stylesheet" href="./css/all.min.css">
+     <link rel="stylesheet" href="../static/css/all.min.css">
     <!-- css link  framework -->
-    <link rel="stylesheet" href="./css/framework.css">
+    <link rel="stylesheet" href="../static/css/framework.css">
     <!--  css link  master -->
-    <link rel="stylesheet" href="./css/master.css">
+    <link rel="stylesheet" href="../static/css/master.css">
     <!--  normalize link -->
-    <link rel="stylesheet" href="./css/normalise.css">
+    <link rel="stylesheet" href="../static/css/normalise.css">
     <!--  font link  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -93,9 +93,7 @@
                         <i class="fa-regular fa-bell fa-lg "></i>
                     </span>
                     <a href="sign_in.html" class="login">  <i class="fa-regular fa-user"></i> </a>
-                    <!---
-                    <img src="./images/avatar.png" alt=" logo photo">
-                    -->
+                    <img src="{{url_for('static', filename='images/avatar.png')}}" alt=" logo photo">
                 
                 </div>
             </div>

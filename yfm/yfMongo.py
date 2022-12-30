@@ -15,9 +15,8 @@ class yfMongo:
   yfdb = None
   verbose = False
 
-  #
   # Used to print messages only if the verbose flag was enabled
-  #
+
   def sprint (self, msg):
     if self.verbose:
       print (msg)
@@ -47,31 +46,32 @@ class yfMongo:
       except ValueError:
         self.sprint ("Error: invalid provided date format (expected yyyy/mm/dd)")
 
-  #
   # Initialises the ddbb
-  #
-  def __init__(self, database="StockPricePrediction", verbose=True):
-    url ="mongodb+srv://Fintech:qANVTzWevwD9UZz6@stockpriceprediction.9srtpdu.mongodb.net/?retryWrites=true&w=majority"
+
+  def __init__(self, user="Fintech", password="qANVTzWevwD9UZz6", hostname="localhost", port=27017, database="StockPricePrediction", verbose=True):
+    
+    url =f"mongodb+srv://{user}:{password}@{database}.9srtpdu.mongodb.net/?retryWrites=true&w=majority"
     self.mongoClient = MongoClient(url)
     self.yfdb = self.mongoClient[database]
     self.verbose = verbose
+    #print("connection sueccfulu!!")
 
-  #
+  
   # Removes all content in the database (Caution!)
-  #
+  
   def clear (self, keepSymbols=False):
       if keepSymbols:
         self.sprint ("Removing data ... done")
-        self.yfdb.timeline.delete_many({});
+        self.yfdb.timeline.delete_many({})
       else:
         self.sprint ("Removing all collections [symbols and timeline] ... done")
-        self.yfdb.timeline.delete_many({});
-        self.yfdb.symbols.delete_many({});
+        self.yfdb.timeline.delete_many({})
+        self.yfdb.symbols.delete_many({})
 
   def add (self, symbol, startDate = None, endDate = None):
     exists = self.yfdb.symbols.find ({'sym':symbol}).count()
     if not exists:
-      self.yfdb.symbols.insert_one ({'sym':symbol});
+      self.yfdb.symbols.insert_one ({'sym':symbol})
       self.sprint ("'" + symbol + "'" + " added to the database")
     if startDate != None:
       if endDate != None:
@@ -79,24 +79,24 @@ class yfMongo:
       else:
         self.fetch (startDate, symbol)
 
-  #
+  
   # Removes a symbol from the ddbb, including all timeline entries
-  #
+  
   def remove (self, value):
-      exists = self.yfdb.symbols.find({'sym': value}).count();
+      exists = self.yfdb.symbols.find({'sym': value}).count()
       if not exists:
         self.sprint ("Error: symbol'" + value + "' not in the database")
       else:
-        self.yfdb.symbols.delete_many ({'sym':value});
-        self.yfdb.timeline.delete_many ({'sym':value});
+        self.yfdb.symbols.delete_many ({'sym':value})
+        self.yfdb.timeline.delete_many ({'sym':value})
         self.sprint ("'" + value + "'" + " removed from the database")
 
-  #
+  
   # Prints information regarding the admin info (start and end dates)
   # and the symbols contained in the database
-  #
+  
   def info (self):
-    symbols = self.yfdb.symbols.find();
+    symbols = self.yfdb.symbols.find()
     for symb in symbols:   
       print (symb['sym'])
     print ("Timeline size: " + str(self.yfdb.timeline.find().count()))
@@ -110,10 +110,10 @@ class yfMongo:
       print ("Oldest record: " + min(dates).strftime("%Y/%m/%d"))
       print ("Most recent record: " + max(dates).strftime("%Y/%m/%d"))
 
-  #
+  
   # Updates the database fetching data for all symbols since last 
   # date in the data until today
-  #
+  
   def update (self):
     tickers = self.yfdb.symbols.find()
     for ticker in tickers:
@@ -129,11 +129,11 @@ class yfMongo:
                              date.today().strftime("%Y/%m/%d"),
                              symbol=ticker["sym"]) 
 
-  #
+  
   # Fetches symbol data for the interval between startDate and endDate
   # If the symbol is not None, all symbols found in the database are
   # updated.
-  #
+  
   def fetchInterval (self, startDate, endDate, symbol=None):
     date = None
     try:
@@ -154,11 +154,11 @@ class yfMongo:
       if len(data) > 0:
         self.yfdb.timeline.insert(data)
 
-  #
+  
   # Loads symbols from a file, separated by spaces or commas
-  #
+  
   def loadSymbols (self, sfile):
-    symbols = [];
+    symbols = []
     lines = (line.rstrip('\n') for line in open(sfile))
     for line in lines:
       values = re.split(" |,", line)
@@ -167,21 +167,21 @@ class yfMongo:
       for value in values:
         self.add (value)
 
-  #
+  
   # Exports the timeline content to the given filename in JSON format
-  #
+  
   def exportJSON (self, filename):
     exportFile = open (filename, "w")
     symbols = self.yfdb.timeline.find({}, { '_id': 0})
-    output = [];
+    output = []
     for symb in symbols:
         output.append(symb)
     exportFile.write (json.dumps(output))
     exportFile.close()
 
-  #
+  
   # Exports the timeline content to the given filename in CSV format
-  #
+  
   def exportCSV (self, filename):
     exportFile = open (filename, "w")
     # exclude the _id
