@@ -24,7 +24,7 @@ class yfm:
     print (" yfm export-csv filename        -- export the content in CSV format")
 
   def __init__(self, cliParams, hostname, port, database, user, password, verbose):
-    moAdmin = fetcher(hostname=hostname, port=port, database=database, user=user, password=password, verbose=verbose)
+    moAdmin = fetcher(user=user, password=password, hostname=hostname, port=port,  database=database, verbose=verbose)
 
     numParams = len(cliParams)
     if numParams == 1: # no args

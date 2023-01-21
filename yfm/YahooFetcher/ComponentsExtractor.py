@@ -13,7 +13,7 @@ class ComponentsExtractor:
   # Extracts the index constituent data (limited to 30 underlying secs)
   # Check the list in globalIndexes file
   def getComponents (self, index):
-    queryURL = self.BASE_URL.replace ("_INDEX_", index)
+    queryURL = self.BASE_URL.replace ("_INDEX_", index)   #replace url with ticker 
     instrumentPage = urllib3.PoolManager().request ("GET", queryURL)
     soup = BeautifulSoup(instrumentPage.data, "html.parser")
     try:
@@ -24,7 +24,7 @@ class ComponentsExtractor:
 
   # Extracts the stocks listed in a stock from eoddata.com
   # Check the list in the exchanges file
-  # 
+  
   def getExchange (self, exch):
     BASE_URL = "http://www.eoddata.com/stocklist/_EXCHANGE_ID_/_L_.htm"
     exchangeUrl = BASE_URL.replace("_EXCHANGE_ID_", exch)
