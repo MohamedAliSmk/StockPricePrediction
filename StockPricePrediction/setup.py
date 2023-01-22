@@ -2,12 +2,15 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as mticker
 from mplfinance.original_flavor import candlestick_ohlc
-
+import pandas as pd
 import numpy as np
 import urllib
 import datetime as dt
+import yfm 
 
-
+fetcher=yfm.fetcher()
+fetcher.getTicker("goog")  # read from the db
+fetcher.update() # same as 'yfm update's
 def bytespdate2num(fmt, encoding='utf-8'):
     strconverter = mdates.strpdate2num(fmt)
     def bytesconverter(b):
@@ -21,19 +24,8 @@ def graph_data(stock):
     fig = plt.figure()
     ax1 = plt.subplot2grid((1,1), (0,0))
     
-    # Unfortunately, Yahoo's API is no longer available
-    # feel free to adapt the code to another source, or use this drop-in replacement.
-    stock_price_url = 'https://pythonprogramming.net/yahoo_finance_replacement'
-    source_code = urllib.request.urlopen(stock_price_url).read().decode()
-    stock_data = []
-    split_source = source_code.split('\n')
-    for line in split_source[1:]:
-        split_line = line.split(',')
-        if len(split_line) == 7:
-            if 'values' not in line and 'labels' not in line:
-                stock_data.append(line)
 
-    
+    stock_data=fetcher
     date, closep, highp, lowp, openp, adj_closep, volume = np.loadtxt(stock_data,
                                                           delimiter=',',
                                                           unpack=True,
