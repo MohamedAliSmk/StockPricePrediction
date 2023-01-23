@@ -49,8 +49,10 @@ class yfMongo:
   # Initialises the ddbb
 
   def __init__(self, user="Fintech", password="qANVTzWevwD9UZz6", hostname="localhost", port=27017, database="StockPricePrediction", verbose=True):
-    
-    url =f"mongodb+srv://{user}:{password}@{database}.9srtpdu.mongodb.net/?retryWrites=true&w=majority"
+    userAndPass = ""
+    if user and password:
+      userAndPass = user + ":" + str(password) + "@"
+    url = "mongodb://" + userAndPass + hostname + ":" + str(port)
     self.mongoClient = MongoClient(url)
     self.yfdb = self.mongoClient[database]
     self.verbose = verbose
