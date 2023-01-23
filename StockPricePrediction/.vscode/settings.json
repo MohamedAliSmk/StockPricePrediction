@@ -2,5 +2,6 @@
     "python.analysis.extraPaths": [
         "./root",
         "./yfm"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }

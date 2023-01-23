@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
 
-from users.custom_form_validators import safe_string, unique_or_current_user_field
+from root.users.custom_form_validators import safe_string, unique_or_current_user_field
 
 
 class RegistrationForm(FlaskForm):

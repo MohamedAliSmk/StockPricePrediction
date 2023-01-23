@@ -4,7 +4,7 @@ import re
 from flask_login import current_user
 from wtforms import ValidationError
 
-from users.models import User
+from root.users.models import User
 
 
 def safe_string():

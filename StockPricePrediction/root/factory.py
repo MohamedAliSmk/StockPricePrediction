@@ -5,9 +5,9 @@ from bson import ObjectId, json_util
 from flask import Flask
 from flask.json import JSONEncoder
 
-from core.views import core
-from globals import db, login_manager
-from users.views import users
+from root.core.views import core
+from root.globals import db, login_manager
+from root.users.views import users
 
 
 class MongoJsonEncoder(JSONEncoder):
@@ -29,13 +29,13 @@ def create_app():
     app.json_encoder = MongoJsonEncoder
 
     # Update app.config from environment variables
-    app.config["SECRET_KEY"] ='StockPricePredictionS' 
+    app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
     app.config["MONGODB_SETTINGS"] = {
         "authentication_source": "admin",
-        "host":'mongodb+srv://Fintech:qANVTzWevwD9UZz6@stockpriceprediction.9srtpdu.mongodb.net/?retryWrites=true&w=majority' ,
-        "port":27017 ,
-        "username":'Fintech',
-        "password":'qANVTzWevwD9UZz6'
+        "host": os.getenv("MONGODB_HOST"),
+        "port": int(os.getenv("MONGODB_PORT")),
+        "username": os.getenv("MONGODB_USERNAME"),
+        "password": os.getenv("MONGODB_PASSWORD"),
     }
 
     # register blueprints

@@ -7,4 +7,4 @@ core = Blueprint("core", __name__)
 @core.route("/")
 def index():
     """This is the landing page view"""
-    return render_template("templetes/index.html")
+    return render_template("core/index.html")

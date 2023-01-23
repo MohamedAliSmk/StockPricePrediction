@@ -11,9 +11,9 @@ from flask import (
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash
 
-from users.forms import LoginForm, RegistrationForm, SettingsForm
-from users.models import User
-from users.oauth_config import authomatic
+from root.users.forms import LoginForm, RegistrationForm, SettingsForm
+from root.users.models import User
+from root.users.oauth_config import authomatic
 
 users = Blueprint("users", __name__)
 
@@ -34,7 +34,7 @@ def register():
         user.save()
         flash("Thanks for registering!", category="success")
         return login_and_redirect(user)
-    return render_template("templetes/register.html", form=form)
+    return render_template("users/register.html", form=form)
 
 
 @users.route("/login", methods=["GET", "POST"])
@@ -58,7 +58,7 @@ def login():
                 "(email or username)/password combination not found", category="error"
             )
 
-    return render_template("templetes/login.html", form=form)
+    return render_template("users/login.html", form=form)
 
 
 @users.route("/logout")
@@ -91,7 +91,7 @@ def settings():
         form.email.data = current_user.email
 
     return render_template(
-        "templetes/settings.html", form=form, can_disconnect=can_oauth_disconnect()
+        "users/settings.html", form=form, can_disconnect=can_oauth_disconnect()
     )
 
 
@@ -116,6 +116,12 @@ def google_oauth():
     return oauth_generalized("Google")
 
 
+@users.route("/github_oauth")
+def github_oauth():
+    """Perform github oauth operations"""
+    return oauth_generalized("GitHub")
+
+
 @users.route("/facebook_oauth_disconnect")
 def facebook_oauth_disconnect():
     """Disconnect facebook oauth"""
@@ -126,6 +132,13 @@ def facebook_oauth_disconnect():
 def google_oauth_disconnect():
     """Disconnect google oauth"""
     return oauth_disconnect("Google")
+
+
+@users.route("/github_oauth_disconnect")
+def github_oauth_disconnect():
+    """Disconnect github oauth"""
+    return oauth_disconnect("GitHub")
+
 
 # ----------------------------------------------------------------------------
 # HELPER METHODS
