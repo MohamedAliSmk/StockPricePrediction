@@ -33,7 +33,7 @@ def create_app():
     app.config["MONGODB_SETTINGS"] = {
         "authentication_source": "admin",
         "host": os.getenv("MONGODB_HOST"),
-        "port": int(os.getenv("MONGODB_PORT")),
+        "port":int("27017"),
         "username": os.getenv("MONGODB_USERNAME"),
         "password": os.getenv("MONGODB_PASSWORD"),
     }

@@ -25,6 +25,10 @@ df['bb_bbl'] = indicator_bb.bollinger_lband()
 df['bb_bbhi'] = indicator_bb.bollinger_hband_indicator()
 
 # Add Bollinger Band low indicator
+<<<<<<< HEAD
 df['bb_bbli'] = indicator_bb.bollinger_lband_indicator()
 
 
+=======
+df['bb_bbli'] = indicator_bb.bollinger_lband_indicator()
+>>>>>>> 80fc3b49b971e65d91314487818c6be7c7df5db2

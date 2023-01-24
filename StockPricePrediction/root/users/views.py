@@ -34,7 +34,7 @@ def register():
         user.save()
         flash("Thanks for registering!", category="success")
         return login_and_redirect(user)
-    return render_template("users/register.html", form=form)
+    return render_template("core/users/register.html", form=form)
 
 
 @users.route("/login", methods=["GET", "POST"])

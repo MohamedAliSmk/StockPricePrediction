@@ -5,20 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>  Dashboard  </title>
+
+    <!--  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+
+
+
     <!-- css link  framework -->
-    <link rel="stylesheet" href="../static/css/framework.css">
+    <link rel="stylesheet" href="./static/css/framework.css">
     <!--  css link  master -->
-    <link rel="stylesheet" href="../static/css/master.css">
+    <link rel="stylesheet" href="./static/css/master.css">
     <!--  normalize link -->
-    <link rel="stylesheet" href="../static/css/normalise.css">
+    <link rel="stylesheet" href=".//static/css/normalise.css">
     <!--  all link   -->
-    <link rel="stylesheet" href="../static/css/all.min.css">
+    <link rel="stylesheet" href=".//static/css/all.min.css">
     <!--  font link  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
 </head>
 <body>
+
+
     <div class="page d-flex">
         <div class="sidebar  bg-white  p-20  p-relative " > 
             <h3  class="p-relative   text-center mt-0"  > FINTEC </h3>
@@ -41,7 +50,7 @@
                         <span class="hide-mobile"> Profile </span>
                     </a>
                 </li>
-                <li>
+                <!--<li>
                     <a  class="  d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="project.html" >  
                         <i class="fa-solid fa-diagram-project fa-fw"></i>
                         <span class="hide-mobile" > Progects </span>
@@ -73,29 +82,73 @@
                         <i class="fa-regular fa-credit-card  fa-fw"></i>
                         <span class="hide-mobile"> Plans </span>
                     </a>
-                    
-                </li>
+                </li>-->
             </ul>
         </div>
-
         <!-- start content  -->
         <div class="content w-full">
             <!--   start head  -->
-            <div class="head   bg-white  p-15 between-flex  ">
+            <div class="head   bg-white  p-20  between-flex  ">
                 <div class="search  p-relative">
                     <span> <i class="fa-sharp fa-solid fa-magnifying-glass"></i> </span>
-
                     <input  class="p-10" type="search" name="search" id="search"  placeholder="search">
                 </div>
-                <div class="icons   d-flex    align-center">
+                <div class="icons   fs-20  d-flex  space-between">
+                        <div class=" p-relative   notification ">
+                            <i class="fa-regular fa-bell fa-lg  "></i>
+                        </div>
+                        <!--  drop-down -->
+                        <div class="drop">
+                            <i class="fa-regular fa-user"> </i>
+                            <div class="drop-down">
+                                <a href="sign_in.html" class="fs-20 first-drop"  > 
+                                    sign  <i class="fa-regular fa-user"></i> 
+                                </a> 
+                                <!--<div class="dark-mode  d-flex  fs-20  space-around">
+                                    <p> dark mode theme  </p>
+                                    <div class="label" id="togel-mode">
+                                        <label >
+                                            <input type="checkbox" class="togell-checkbox" checked  >
+                                            <div class="togell-switch">
+                                                <span class="one"></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>-->
+                                <div class="dark between-flex">
+                                    <p class="text  fs-20">  dark mode theme </p>
+                                    <i class="bi bi-brightness-high-fill between-flex align-center  " id="toggleDark"></i>
+                                </div>
+                                
+                                <div class="language">
+                                    <a href="#"> Langage    <span> English > </span></a> 
+                                    <div class="another-language" >
+                                        <p> Arpic </p>
+                                        <p> French  </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--<a href="sign_in.html" class="login">  <i class="fa-regular fa-user"></i> </a> -->
+                    
+                    
+                    <!--<a href="#" class="drop">
+                        <i class="fa-regular fa-user"> </i>
+                        <a href="sign_in.html" class="drop-down"> sign   
+                            <i class="fa-regular fa-user"></i>   
+                        </a>
+                        
+                    </a>
+                --> 
                     
                     <span class="p-relative    notification ">
                         <i class="fa-regular fa-bell fa-lg "></i>
                     </span>
                     <a href="sign_in.html" class="login">  <i class="fa-regular fa-user"></i> </a>
-                <img src="../static/images/avatar.png" class="avatar" alt="">
-                    
+                    <img src="{{url_for('../static/images/avatar.png')}}" alt=" logo photo">
+                
                 </div>
+                                
             </div>
             <!--   end head -->
 
@@ -111,9 +164,9 @@
                             <h2  class="m-0" > Welcome  </h2>
                             <p class="c-gray    mt-5">  FINTEC APP.  </p>
                         </div>
-                        <img src="../static/images/welcome.png" class="hide-mobile " alt="">
+                        <img src="{{url_for('static', filename='images/welcome.png')}}" class="hide-mobile " alt="">
                     </div>
-                    <img src="../static/images/avatar.png" class="avatar" alt="">
+                    <img src="{{url_for('static', filename='images/avatar.png')}}" class="avatar" alt="">
                     <div class="body   text-center   d-flex   p-20   mt-20   mb-20    block-mobile">
                         <div> mohmed ali <span class="d-block    c-gray    fs-14    mt-10"> Business Man </span> </div>
                         <div>80 <span class="d-block    c-gray   fs-14    mt-10">  Arros  </span> </div>
@@ -126,7 +179,7 @@
 
                 <!--  start   quick  widget   -->
                 <div class="quick-draft   p-20  bg-white   rad-10     ">
-                    <h2  class="mt-0    mb-20   ">  quick draft </h2>
+                    <h2  class="mt-0    mb-20   ">  quick News </h2>
                     <p class="mt-0   mb-20   c-gray   fs-15  "> write adraft for yours ideas.  </p>
                     <form >
                         <input type="text" class="d-block   mb-20   w-full   p-10   b-none   bg-eee    rad-6 " placeholder="title">
@@ -187,23 +240,19 @@
                 </div>
                 <!--   end  targets  -->
 
-
                 <!--  start      -->
 
-
-
                 <!--   end      -->
-
-
-
-
-
-
 
             </div>
         </div>
         <!-- end  content  -->
         
     </div>
+
+
+    <!-- link to java-script file  -->
+    <script src="./static/js/main.js"></script>
+
 </body>
 </html>
