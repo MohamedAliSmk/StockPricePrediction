@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Dashboard  </title>
+     <!--  all link   -->
+     <link rel="stylesheet" href="../static/css/all.min.css">
+    <!-- css link  framework -->
+    <link rel="stylesheet" href="../static/css/framework.css">
+    <!--  css link  master -->
+    <link rel="stylesheet" href="../static/css/master.css">
+    <!--  normalize link -->
+    <link rel="stylesheet" href="../static/css/normalise.css">
+    <!--  font link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="page d-flex">
+        <div class="sidebar  bg-white  p-20  p-relative " > 
+            <h3  class="p-relative   text-center mt-0"  > FINTEC </h3>
+            <ul class="p-0  list-none    ">
+                <li>
+                    <a  class="   d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="index.html" >  
+                        <i class="fa-solid fa-chart-simple  fa-fw"></i>
+                        <span class="hide-mobile" > Dashboard </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class=" active d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="setting.html" >  
+                        <i class="fa-solid fa-gear fa-fw "></i>
+                        <span class="hide-mobile" > Setting </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class="d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="profile.html" >  
+                        <i class="fa-regular fa-user  fa-fw"></i>
+                        <span class="hide-mobile"> Profile </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class="  d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="project.html" >  
+                        <i class="fa-solid fa-diagram-project fa-fw"></i>
+                        <span class="hide-mobile" > Progects </span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a  class="d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="courses.html" >  
+                        <i class="fa-solid fa-graduation-cap  fa-fw"></i>
+                        <span  class="hide-mobile"> Courses </span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a  class=" d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="user.html" >  
+                        <i class="fa-regular fa-circle-user  fa-fw"></i>
+                        <span class="hide-mobile"> User </span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a  class="   d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="files.html" >  
+                        <i class="fa-regular fa-file fa-fw"></i>
+                        <span class="hide-mobile"> Files </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class="  d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="plans.html" >  
+                        <i class="fa-regular fa-credit-card  fa-fw"></i>
+                        <span class="hide-mobile"> Plans </span>
+                    </a>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <!-- start content  -->
+        <div class="content w-full">
+            <!--   start head  -->
+            <div class="head   bg-white  p-15 between-flex  ">
+                <div class="search  p-relative">
+                    <span> <i class="fa-sharp fa-solid fa-magnifying-glass"></i> </span>
+
+                    <input  class="p-10" type="search" name="search" id="search"  placeholder="search">
+                </div>
+                <div class="icons   d-flex    align-center">
+                    
+                    <span class="p-relative    notification ">
+                        <i class="fa-regular fa-bell fa-lg "></i>
+                    </span>
+                    <a href="sign_in.html" class="login">  <i class="fa-regular fa-user"></i> </a>
+                    <img src="../static/images/avatar.png" class="avatar" alt="">
+                    
+                </div>
+            </div>
+                <h1 class="p-relative"> Settings </h1>
+                <div class="setting-page   m-20   d-grid  g-20">
+        
+                    <!--   start setting box -->
+                    <div class="p-20  bg-white  rad-10">
+                        <h2  class="mt-0  mb-10"> Site Control  </h2>
+                        <p class="mt-0  mb-20  c-grey   fs-15">  Control The Website There Is Maintenance  </p>
+                        <div class="mb-15   between-flex    ">
+                            <div>
+                                <span> Website Control  </span>
+                                <p class="c-gray   mt-5    mb-0    fs-13"> open/close Website And Type Reasons  </p>
+                            </div>
+                            <div>
+                                <label >
+                                    <input type="checkbox" class="togell-checkbox" checked  >
+                                    <div class="togell-switch">
+                                        <span class="one"></span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <textarea class="close-message   b-none   p-10   rad-10   d-block  w-full"   placeholder="close message content"></textarea>
+                    </div>
+                    <!-- end setting box  -->
+                    <!--   start setting box -->
+
+                    <div class="p-20  bg-white  rad-10">
+                        {{ form.hidden_tag() }}
+                        <h2  class="mt-0  mb-10"> General Info  </h2>
+                        <p class="mt-0  mb-20  c-grey   fs-15">  General Information About Your account  </p>
+                        <div class="mb-15">
+                            {{ form.username.label(class="mb-15") }}
+                            {{ form.username(class="f-14  c-gray   d-block   mb-10 ", placeholder=form.username.description) }}
+                            {% for error in form.username.errors %}
+                              <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                            <label class="f-14  c-gray   d-block   mb-10 " for="first"> First Name </label>
+                            <input  class="b-none   border-ccc  p-10   w-full  rad-6  d-block" type="text"  id="first"  placeholder="First Name">
+                        </div>
+
+                        <div class="mb-15">
+                            {{ form.name.label(class="mb-15") }}
+                            {{ form.name(class="f-14  c-gray   d-block   mb-10  ", placeholder=form.name.description) }}
+                            {% for error in form.name.errors %}
+                              <p style="color: red">{{ error }}</p>
+                            {% endfor %}                      
+                            <label class="f-14  c-gray   d-block   mb-10  " for="last"> Last Name </label>
+                            <input  class="b-none   border-ccc  p-10   w-full  rad-6  d-block" type="text"  id="last"  placeholder="Last Name">
+                        </div>
+                        {{ form.email.label(class="mb-10") }}
+                        {{form.email(class="f-14  c-gray   d-block   mb-10", placeholder=form.email.description) }}
+                        {% for error in form.email.errors %}
+                          <p style="color: red">{{ error }}</p>
+                        {% endfor %
+                        <label class="f-14  c-gray   d-block   mb-10  " for="email"> Email </label>
+                            
+                        <div class="between-flex" >
+                            <input  class="b-none   border-ccc  p-10   w-full  rad-6  d-block" type="email" value="ahmedsalehbasuony@gmail.com"  disabled id="email"  placeholder="First Name">
+                            <a href="#" class="c-blue   button-shape  "> Change </a>
+                        </div>
+                        
+                    </div>
+                    <!-- end setting box  -->
+                    
+                    <!--   start setting box -->
+                    <div class="p-20  bg-white  rad-10   ">
+                        <h2  class="mt-0  mb-10"> Security Information  </h2>
+                        <p class="mt-0  mb-20  c-gray   fs-15">  Securiry information About  Your Account  </p>
+                        <div class="sec-box   mb-20   between-flex">
+                                <span>  password   </span>
+                                    {{ form.new_pass.label() }}
+                                    {{ form.new_pass(class="sec-box   mb-20   between-flex", placeholder=form.new_pass.description) }}
+                                    {% for error in form.new_pass.errors %}
+                                      <p style="color: red">{{ error }}</p>
+                                    {% endfor %}
+                            </div>
+                            <div class="sec-box   mb-20   between-flex">
+                              
+                                    {{ form.pass_confirm.label() }}
+                                    {{ form.pass_confirm(class="form-control text-center", placeholder=form.pass_confirm.description) }}
+                                    {% for error in form.pass_confirm.errors %}
+                                      <p style="color: red">{{ error }}</p>
+                                    {% endfor %}
+                                  </div>
+                                  {{ form.submit(class="btn btn-lg btn-primary") }}
+                                                              
+                                <p class="c-gray   mt-5   mb-0   fs-14"> Last Change <br> on 27/12/2022 </p>
+                            </div>
+                            <a class=" button-shape   bg-blue   c-white    p-10   rad-6" href="#"> Change  </a> 
+                        </div>
+
+
+                        <div class="sec-box   mb-20   between-flex">
+                            <div class="">
+                                <span>  Two-Factor Authentication  </span>
+                                <p class="c-gray   mt-5   mb-0   fs-14"> Enable/Disable The Feature </p>
+                            </div>
+                            <label >
+                                <input type="checkbox" class="togell-checkbox" checked  >
+                                <div class="togell-switch">
+                                    <span class="one"></span>
+                                </div>
+                            </label>
+                        </div>
+
+
+                        <div class="sec-box   mb-20   between-flex">
+                            <div class="">
+                                <span>  Devices   </span>
+                                <p class="c-gray   mt-5   mb-0   fs-14"> Check The Login Devices List </p>
+
+                            </div>
+                            <a class=" button-shape   bg-eee  col-black   p-10   rad-6" href="#"> Device  </a>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- end setting box  -->
+
+                    <!--   start setting box -->
+                    <div class="p-20  bg-white  rad-10   social-boxes">
+                        <h2  class="mt-0  mb-10"> Social Info  </h2>
+                        <p class="mt-0  mb-20  c-gray   fs-15">  Social media information  </p>
+                        <!--  twitter -->
+                        <div class="sec-box  d-flex  align-center   mb-15">
+                            <i class="fa-brands  fa-twitter  center-flex  c-gray"></i>
+                            <input class="w-full" type="text"  placeholder="Twitter UserName">
+                        </div>
+
+                        <!--  facebook -->
+                        <div class="sec-box  d-flex  align-center   mb-15">
+                            <i class="fa-brands  fa-facebook  center-flex  c-gray"></i>
+                            <input class="w-full" type="text"  placeholder="Facebook UserName">
+                        </div>
+
+                        <!--  linked-en  -->
+                        <div class=" sec-box d-flex  align-center   mb-15">
+                            <i class="fa-brands  fa-linkedin  center-flex  c-gray"></i>
+                            <input class="w-full" type="text"  placeholder="Linkedin UserName">
+                        </div>
+
+                        <!-- you-tube -->
+                        <div class="  d-flex  align-center   mb-15">
+                            <i class="fa-brands  fa-youtube  center-flex  c-gray"></i>
+                            <input class="w-full" type="text"  placeholder="Youtube UserName">
+                        </div>
+
+                    </div>
+                    <!-- end setting box  -->
+
+                    <!--   start setting box -->
+                    <div class="widget-control  p-20  bg-white  rad-10   social-boxes">
+                        <h2  class="mt-0  mb-10"> Widgets  Control  </h2>
+                        <p class="mt-0  mb-20  c-gray   fs-15">  Show/Hide Widgets </p>
+                        <div class="control   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="one" >
+                            <label for="one">  Quick Draft  </label>
+                        
+                        </div>
+
+                        <div class="control   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="two" >
+                            <label for="two">  Yearly Targets  </label>
+                        </div>
+
+                        <div class="control   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="three" checked >
+                            <label for="three">  Tickets Statistics  </label>
+                        </div>
+
+                        <div class="control   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="four" checked >
+                            <label for="four">  Latest News  </label>
+                        </div>
+
+                        <div class="control   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="five" >
+                            <label for="five">   Latest Tasks  </label>
+                        </div>
+
+                        <div class="control   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="six"  checked >
+                            <label for="six">  Top Search Items  </label>
+                        </div>
+
+                    </div>
+                    <!-- end setting box  -->
+
+
+                    <!--   start setting box -->
+                    <div class="backup-control  p-20  bg-white  rad-10   social-boxes">
+                        <h2  class="mt-0  mb-10"> Bacukp Manager  </h2>
+                        <p class="mt-0  mb-20  c-gray   fs-15"> Control Backup Time  And Location    </p>
+                        <div class="date   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="Daily" >
+                            <label for="Daily">  Daily </label>
+                        </div>
+
+                        <!-- wekely backup  -->
+                        <div class="date   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="Weekly" >
+                            <label for="Weekly">  Weekly </label>
+                        </div>
+
+                        <!--  monthly   backup -->
+                        <div class="date   d-flex   align-center   mb-15 ">
+                            <input type="checkbox" id="month" checked >
+                            <label for="month">  Monthly </label>
+                        </div>
+                            <div class="servers  align-center txt-c">
+                                <div class="server d-flex   mb-15 rad-10 w-full  ">
+                                            <input type="radio" name="servers" id="server-one" />
+                                        <div class="server mb-15 rad-10 w-full">
+                                        <label class="d-block m-15" for="server-one">
+                                            <i class="fa-solid fa-server d-block mb-10"></i>
+                                            Megaman
+                                        </label>
+                                        </div>
+                                        <input type="radio" name="servers" id="server-two" checked />
+                                        <div class="server mb-15 rad-10 w-full">
+                                        <label class="d-block m-15" for="server-two">
+                                            <i class="fa-solid fa-server d-block mb-10"></i>
+                                            FINTEC
+                                        </label>
+                                        </div>
+                                        <input type="radio" name="servers" id="server-three" />
+                                        <div class="server mb-15 rad-10 w-full">
+                                        <label class="d-block m-15" for="server-three">
+                                            <i class="fa-solid fa-server d-block mb-10"></i>
+                                            Sigma
+                                        </label>
+                                        </div>
+                                </div>
+                            </div>
+
+                    </div>
+                    <!-- end setting box  -->
+
+                </div>
+        </div>
+          <!-- Facebook -->
+  <h3>Facebook</h3>
+  {% if current_user.facebook_id %}
+    <h5>Connected</h5>
+    {% if can_disconnect %}
+      <a href="{{ url_for('users.facebook_oauth_disconnect') }}" class="btn btn-warning">
+          Disconnect from Facebook
+      </a>
+    {% else %}
+      <button class="btn btn-warning" type="button" disabled>
+        Disconnect from Facebook
+      </button>
+      <p style="color: red">
+        You must define an email and password or connect
+        to another social oauth before disconnecting from Facebook.
+      </p>
+    {% endif %}
+  {% else %}
+    <h5><a class="btn btn-info" href="{{ url_for('users.facebook_oauth') }}">Connect to Facebook</a></h5>
+  {% endif %}
+  <br>
+
+  <!-- Google -->
+  <h3><i class="fab fa-google-plus-square"></i> Google</h3>
+  {% if current_user.google_id %}
+    <h5>Connected</h5>
+    {% if can_disconnect %}
+      <a class="btn btn-warning" href="{{ url_for('users.google_oauth_disconnect') }}">
+        Disconnect from Google
+      </a>
+    {% else %}
+      <button class="btn btn-warning" type="button" disabled>
+        Disconnect from Google
+      </button>
+      <p style="color: red">
+        You must define an email and password or connect
+        to another social oauth before disconnecting from Google.
+      </p>
+    {% endif %}
+  {% else %}
+    <h5><a class="btn btn-info" href="{{ url_for('users.google_oauth') }}">Connect to Google</a></h5>
+  {% endif %}
+  <br>
+  <!-- Delete Account -->
+  <h2>Delete account?</h2>
+  <p>Warning: data stored will be irreversibly lost.</p>
+  <a class="btn btn-danger btn-lg" href="{{ url_for('users.delete_account') }}">
+    Delete account
+  </a>
+</div>
+
+    </body>
+</html>

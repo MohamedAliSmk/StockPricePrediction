@@ -80,7 +80,7 @@ msft.isin
 msft.options
 
 # show news
-print(msft.news)
+msft.news
 
 # get option chain for specific expiration
 opt = msft.option_chain('YYYY-MM-DD')

@@ -1,28 +1,208 @@
-{% extends "core/base.html" %}
-{% block content %}
-<div class="container text-center">
-  <div class="jumbotron">
-    <h1 class="display-4">This is our intro page!</h1>
-    <p class="lead">
-      Here we're going to just display info about you, the current user.
-      You provided this information by registering!
-    </p>
-    <hr class="my-4">
-    {% if current_user.is_authenticated %}
-      <h3>You are logged in</h3>
-      <p>Username: {{ current_user.username }}</p>
-      <p>Name: {{ current_user.name }}</p>
-      <p>Email: {{ current_user.email }}</p>
-      <!-- You would probably never show these last 4 categories to your users -->
-      <!-- BUT, at least your password isn't stored in clear text! -->
-      <p>Password hash:</p>
-      <p>{{ current_user.password_hash }}</p>
-      <p>Facebook ID: {{ current_user.facebook_id }}</p>
-      <p>Google ID: {{ current_user.google_id }}</p>
-      <p>Github ID: {{ current_user.github_id }}</p>
-    {% else %}
-      <p>You are not logged in</p>
-    {% endif %}
-  </div>
-</div>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Dashboard  </title>
+    <!-- css link  framework -->
+    <link rel="stylesheet" href="../static/css/framework.css">
+    <!--  css link  master -->
+    <link rel="stylesheet" href="./static/css/master.css">
+    <!--  normalize link -->
+    <link rel="stylesheet" href="./static/css/normalise.css">
+    <!--  all link   -->
+    <link rel="stylesheet" href="./static/css/all.min.css">
+    <!--  font link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="page d-flex">
+        <div class="sidebar  bg-white  p-20  p-relative " > 
+            <h3  class="p-relative   text-center mt-0"  > FINTEC </h3>
+            <ul class="p-0  list-none    ">
+                <li>
+                    <a  class="active   d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="index.html" >  
+                        <i class="fa-solid fa-chart-simple  fa-fw"></i>
+                        <span class="hide-mobile" > Dashboard </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class=" d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="setting.html" >  
+                        <i class="fa-solid fa-gear fa-fw "></i>
+                        <span class="hide-mobile" > Setting </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class="d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="profile.html" >  
+                        <i class="fa-regular fa-user  fa-fw"></i>
+                        <span class="hide-mobile"> Profile </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class="  d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="project.html" >  
+                        <i class="fa-solid fa-diagram-project fa-fw"></i>
+                        <span class="hide-mobile" > Progects </span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a  class="d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="courses.html" >  
+                        <i class="fa-solid fa-graduation-cap  fa-fw"></i>
+                        <span  class="hide-mobile"> Courses </span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a  class=" d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="user.html" >  
+                        <i class="fa-regular fa-circle-user  fa-fw"></i>
+                        <span class="hide-mobile"> User </span>
+                    </a>
+                    
+                </li>
+                <li>
+                    <a  class="   d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="files.html" >  
+                        <i class="fa-regular fa-file fa-fw"></i>
+                        <span class="hide-mobile"> Files </span>
+                    </a>
+                </li>
+                <li>
+                    <a  class="  d-flex  align-center  fs-14   col-black   rad-6  p-10 " href="plans.html" >  
+                        <i class="fa-regular fa-credit-card  fa-fw"></i>
+                        <span class="hide-mobile"> Plans </span>
+                    </a>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <!-- start content  -->
+        <div class="content w-full">
+            <!--   start head  -->
+            <div class="head   bg-white  p-15 between-flex  ">
+                <div class="search  p-relative">
+                    <span> <i class="fa-sharp fa-solid fa-magnifying-glass"></i> </span>
+                    <input  class="p-10" type="search" name="search" id="search" onclick="site.SubmitForm();" placeholder="search">
+                </div>
+                <div class="icons   d-flex    align-center">
+                    
+                    <span class="p-relative    notification ">
+                        <i class="fa-regular fa-bell fa-lg "></i>
+                    </span>
+                    <a href="sign_in.html" class="login">  <i class="fa-regular fa-user"></i> </a>
+                <img src="./static/images/avatar.png" class="avatar" alt="">
+                    
+                </div>
+            </div>
+            <!--   end head -->
+
+            <h1 class="p-relative"> Dashboard </h1>
+            <div class="wrapper   d-grid   gap-20">
+
+
+
+                <!--  start  welcome  widget   -->
+                <div class="welcome    bg-white    rad-10    text-center-mobile    block-mobile">
+                    <div class="intro   p-20   d-flex   space-between   bg-eee">
+                        <div>
+                            <h2  class="m-0" > Welcome  </h2>
+                            <p class="c-gray    mt-5">  FINTEC APP.  </p>
+                        </div>
+                        <img src="./static/images/welcome.png" class="hide-mobile " alt="">
+                    </div>
+                    <img src="./static/images/avatar.png" class="avatar" alt="">
+                    <div class="body   text-center   d-flex   p-20   mt-20   mb-20    block-mobile">
+                        <div> mohmed ali <span class="d-block    c-gray    fs-14    mt-10"> Business Man </span> </div>
+                        <div>80 <span class="d-block    c-gray   fs-14    mt-10">  Arros  </span> </div>
+                        <div> $8500 <span class="d-block    c-gray    fs-14    mt-10"> Earned </span> </div>
+                    </div>
+                    <a href="profile.html" class="visit   d-block  fs-14    rad-6   bg-blue    w-fit    button-shape"  > profile  </a>
+                </div>
+                <!--  end  welcome  widget   -->
+
+
+                <!--  start   quick  widget   -->
+                <div class="quick-draft   p-20  bg-white   rad-10     ">
+                    <h2  class="mt-0    mb-20   ">  quick draft </h2>
+                    <p class="mt-0   mb-20   c-gray   fs-15  "> write adraft for yours ideas.  </p>
+                    <form >
+                        <input type="text" class="d-block   mb-20   w-full   p-10   b-none   bg-eee    rad-6 " placeholder="title">
+                        <textarea class="d-block   mb-20   w-full   p-10   b-none   bg-eee    rad-6  "  placeholder="Your Thought" name="" id="" cols="30" rows="10"></textarea>
+                        <input  class="save   d-block    fs-14    bg-blue   c-white    b-none   w-fit  button-shape " type="submit" value="Save">
+                    </form>
+                </div>
+                <!--  end  quick   widget   -->
+
+                <!--  start tagets -->
+                <div class="targets    p-20   bg-white   rad-10 ">
+                    <h2  class="mt-0    mb-10"> Yearly Target  </h2>
+                    <p class="mt-0   mb-20   fs-15"> Tagets Of Years   </p>
+                    <div class="targets-row   mb-20      align-center   d-flex ">
+                        <div class="icon   center-flex    blue">
+                            <i class="fa-solid  fa-dollar  fa-lg   c-blue"></i>
+                        </div>
+                        <div class="details">
+                            <span class="fs-14    c-gray"> Money </span>
+                            <span class="d-block   mt-5   mb-10    fw-bold">  $20.000  </span>
+                            <div class="progress   p-relative  blue">
+                                <span  class="bg-blue  " style="width:60%">
+                                    <span class="bg-blue  "> 64% </span>   
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="targets-row   mb-20    orange  align-center   d-flex ">
+                        <div class="icon   center-flex    blue">
+                            <i class="fa-solid fa-arrow-trend-up  orange  "></i>
+                        </div>
+                        <div class="details">
+                            <span class="fs-14    c-gray"> My Arrows </span>
+                            <span class="d-block   mt-5   mb-10     col-black  fw-bold">  639  </span>
+                            <div class="progress   p-relative  blue">
+                                <span  class="bg-orange    orange " style="width:40%">
+                                    <span class="bg-orange  "> 34% </span>   
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="targets-row   mb-20   green   align-center   d-flex ">
+                        <div class="icon   center-flex    blue">
+                            <i class="fa-solid   fa-user  green     fa-lg   "></i>
+                        </div>
+                        <div class="details">
+                            <span class="fs-14    c-gray"> Teams </span>
+                            <span class="d-block   mt-5   mb-10  col-black   fw-bold">  8  </span>
+                            <div class="progress   p-relative  blue">
+                                <span  class="bg-green  green " style="width:70%">
+                                    <span class="bg-green  "> 75% </span>   
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--   end  targets  -->
+
+
+                <!--  start      -->
+
+
+
+                <!--   end      -->
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <!-- end  content  -->
+        
+    </div>
+</body>
+</html>
